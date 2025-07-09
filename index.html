@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>話せる韓国語で、未来を変える。ryoyaコーチング</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* html { scroll-behavior: smooth; } */
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #FDFBF7; /* Warm Neutral */
+            color: #3a3a3a;
+        }
+        .text-sage-700 { color: #485D53; } /* Darker Sage for headings */
+        .bg-sage-500 { background-color: #6B8A7A; } /* Main Sage for accents/buttons */
+        .bg-sage-100 { background-color: #C7DED1; } /* Lighter Sage for backgrounds */
+        .border-sage-500 { border-color: #6B8A7A; }
+        .focus-ring-sage:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(107, 138, 122, 0.5); /* Sage with transparency */
+        }
+        /* メッセージ表示用のスタイル - transitionを再追加し、フェードインを設定 */
+        .message-box {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 0.5s ease-out; /* opacityを1秒に設定 */
+        }
+        .message-box.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ストーリー本文の段落にインデントを調整 (0.5emに変更) */
+        .story-content p,
+        .problem-card p:not(.font-semibold), /* 問題カード内の説明文 */
+        .gain-card p:not(.font-semibold), /* あなたが得られる未来カード内の説明文 */
+        .why-choose-card p:not(.font-semibold) /* なぜ私のコーチングなのかカード内の説明文 */
+         {
+            text-indent: 0.5em; /* 0.5文字分のインデントに調整 */
+        }
+
+        /* ヘッダーのタイトルを画面幅に合わせて1行で表示 */
+        .header-title-responsive {
+            white-space: nowrap; /* 強制的に1行に */
+            overflow: hidden; /* はみ出した部分を隠す */
+            /* clamp()関数でフォントサイズを柔軟に調整し、1行に収まるように試みる */
+            font-size: clamp(1rem, 4vw + 0.5rem, 2.25rem); /* 最小1rem, 最大2.25rem, 画面幅に応じて可変 */
+        }
+        /* md以上の画面ではTailwindの通常のサイズ指定を調整 */
+        @media (min-width: 768px) {
+            .header-title-responsive {
+                font-size: 1.5rem; /* md:text-2xl 相当に調整 */
+            }
+        }
+        @media (min-width: 1024px) {
+            .header-title-responsive {
+                font-size: 1.875rem; /* lg:text-3xl 相当に調整 */
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm transition-all duration-300 ease-in-out">
+        <div class="container mx-auto px-4 py-3 flex justify-center items-center">
+            <h1 class="font-bold text-sage-700 text-center header-title-responsive">
+                話せる韓国語で、その先へ。
+            </h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="bg-sage-100 py-16 px-4 text-center">
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-extrabold text-sage-700 leading-tight mb-5">
+                    その韓国語<br>通じますか？
+                </h2>
+                <p class="text-base sm:text-lg md:text-xl text-gray-700 mb-8">
+                    ただの「韓国好き」で終わらせない。<br class="md:hidden">あなたの「好き」を、「自信」に変えよう。
+                </p>
+                <a href="#problem-section" id="changeButton" class="inline-block bg-sage-500 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-sage-700 transition duration-300 focus-ring-sage text-base sm:text-lg">
+                    変わりたいあなたへ
+                </a>
+                <div id="guaranteeMessage" class="message-box mt-8 text-lg sm:text-xl md:text-2xl font-bold text-sage-700 leading-relaxed">
+                    勇気を出してくれた“あなただけ”に、<br>無料相談枠の確保をお約束します。
+                </div>
+            </div>
+        </section>
+
+        <section id="problem-section" class="py-12 px-4 bg-white">
+            <div class="container mx-auto max-w-3xl text-center">
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-sage-700 mb-8">
+                    こんな経験、ありませんか？
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left text-gray-700">
+                    <div class="bg-white p-5 rounded-xl shadow-md border-l-4 border-sage-500 problem-card">
+                        <p class="font-semibold text-base sm:text-lg md:text-xl mb-1">😩 始めては、やめてを繰り返す独学</p>
+                        <p class="text-base sm:text-lg">やる気が出て、新しいテキストやアプリに飛びついては、結局最後までやりきれず...そんな負のループに陥っている...。</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-md border-l-4 border-sage-500 problem-card">
+                        <p class="font-semibold text-base sm:text-lg md:text-xl mb-1">📚 正しい学習方法がわからない</p>
+                        <p class="text-base sm:text-lg">YouTube、SNS、ブログ…情報が多すぎて、どれが自分に最適か分からず、結局何も手につかず時間だけが過ぎていく...。</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-md border-l-4 border-sage-500 problem-card">
+                        <p class="font-semibold text-base sm:text-lg md:text-xl mb-1">🗣️ 聞き取れるのに、話せない</p>
+                        <p class="text-base sm:text-lg">「なんとなく聞き取れる」で止まったまま、そこから前に進めない...。</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-md border-l-4 border-sage-500 problem-card">
+                        <p class="font-semibold text-base sm:text-lg md:text-xl mb-1">📈 成長が実感できない</p>
+                        <p class="text-base sm:text-lg">いつになったら本当に話せるようになるのかな？最近全然伸びてない気がする...。</p>
+                    </div>
+                </div>
+                <div class="p-5 mt-10 mx-auto w-fit">
+                    <p class="text-xl sm:text-2xl md:text-3xl text-gray-700 font-bold leading-relaxed text-center">
+                        でも、大丈夫です。<br>
+                        実は、独学者の75%以上が、<br>
+                        挫折を経験しています。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-sage-100 py-6 px-4">
+            <div class="container mx-auto max-w-4xl text-center">
+                <h3 class="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-bold text-sage-700 mb-1 sm:mb-0 leading-tight">
+                    かつては、私もあなたと同じでした。
+                </h3>
+                <p class="text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg text-gray-700 mt-0 mb-6 leading-tight">
+                    はじめまして。韓国語コーチのryoyaです。
+                </p>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-left text-gray-700 text-base sm:text-lg story-content">
+                    <p class="mb-3">
+                        私も、かつては韓国語学習に悩み、何度も挫折を繰り返していました。
+                        「話せるようになりたい」と思って始めたはずの韓国語学習。
+                        でも、気づけばゴールも見えず、何をどう学べばいいのか分からないまま、
+                        やる気が出ては少し勉強し、また手が止まる——そんなことの繰り返しでした。
+                    </p>
+                    <p class="mb-3">
+                        教材だけが増えていくのに、実力はなかなか伴わず、
+                        少しずつ聞き取れるようになってきても、いざ話そうとすると言葉が出てこない。
+                        「このままで本当に話せるようになるのかな…？」
+                        そんな不安を抱えながら、モヤモヤした時間を過ごしていました。
+                    </p>
+                    <p class="mb-3">
+                        私の韓国語学習が変わり始めたのは、ある瞬間からでした。
+                        その日をきっかけに、学び方を根本から見直し、目の前の景色が大きく変わりました。
+                        そして今、私は韓国での生活を実現し、日々その言葉を使いながら、自分の人生を切り拓いています。
+                    </p>
+                    <p>
+                        振り返ると、大切だったのは「正しく進むこと」でした。
+                        自分に合った道を見つけたことで、韓国語は“自信”へと変わっていったのです。
+                    </p>
+                </div>
+                <p class="text-base sm:text-lg md:text-xl text-gray-700 mt-8 font-bold">
+                    たくさん失敗してきた私だからこそ、<br>
+                    あなたの可能性を引き出せます。
+                </p>
+            </div>
+        </section>
+
+        <section class="py-12 px-4 bg-white">
+            <div class="container mx-auto max-w-4xl text-center">
+                <h3 class="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-bold text-sage-700 mb-1 sm:mb-0 leading-tight">
+                    <span class="md:hidden"></span>どんな未来を手に入れたいですか？
+                </h3>
+                <p class="text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg text-gray-700 mt-0 mb-6 leading-tight">
+                    韓国語を学んだその先にあなたのゴールはあります。
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left text-gray-700">
+                    <div class="bg-white p-5 rounded-xl shadow-md border-l-4 border-sage-500 gain-card">
+                        <p class="font-semibold text-base sm:text-lg md:text-xl mb-1">🗣️ 推しと韓国語で話したい</p>
+                        <p class="text-base sm:text-lg">大好きなアイドルや俳優の言葉を、字幕なしでそのまま理解したい。そしていつか、自分の言葉で気持ちを伝えられるようになりたい。</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-md border-l-4 border-sage-500 gain-card">
+                        <p class="font-semibold text-base sm:text-lg md:text-xl mb-1">✈️ 韓国旅行をもっと楽しみたい</p>
+                        <p class="text-base sm:text-lg">注文や買い物だけじゃなく、現地の人とちょっとした会話も楽しみたい。ガイドブックにないディープなスポットにも、自分の力で行ってみたい。</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-md border-l-4 border-sage-500 gain-card">
+                        <p class="font-semibold text-base sm:text-lg md:text-xl mb-1">🏠 韓国で暮らしてみたい</p>
+                        <p class="text-base sm:text-lg">留学やワーホリ、就職…いつか韓国に住んでみたい。言葉の壁に悩まず大好きな韓国で暮らしてみたい。</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-md border-l-4 border-sage-500 gain-card">
+                        <p class="font-semibold text-base sm:text-lg md:text-xl mb-1">💼 好きを仕事にしたい</p>
+                        <p class="text-base sm:text-lg">韓国語を使って、自分でビジネスを始めたい。現地のアイテムを直接仕入れたり、韓国のトレンドを活かして、あなたの好きなことを形にしたい。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-sage-100 py-12 px-4">
+            <div class="container mx-auto max-w-4xl text-center">
+                <h3 class="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-bold text-sage-700 mb-1 sm:mb-0 leading-tight">
+                    なぜ、私のコーチングなのか？
+                </h3>
+                <p class="text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg text-gray-700 mt-0 mb-6 leading-tight">
+                    あなただけのオーダーメイドサポートがここに。
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left text-gray-700">
+                    <div class="bg-white p-5 rounded-xl shadow-md why-choose-card">
+                        <div class="text-sage-500 text-3xl sm:text-4xl mb-3 text-center">💡</div>
+                        <p class="font-semibold text-base sm:text-lg md:text-xl mb-1 text-center">最適な学習法</p>
+                        <p class="text-base sm:text-lg">あなたの目標やレベル、ライフプランに合わせて最適な学習プランを設計します。<br>最速で成果につなげましょう。</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-md why-choose-card">
+                        <div class="text-sage-500 text-3xl sm:text-4xl mb-3 text-center">🤝</div>
+                        <p class="font-semibold text-base sm:text-lg md:text-xl mb-1 text-center">徹底サポート</p>
+                        <p class="text-base sm:text-lg">学習の状況に応じて丁寧に振り返りとフィードバックを行い、挫折を防ぎながら専属コーチとしてしっかりサポートします。</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-md why-choose-card">
+                        <div class="text-sage-500 text-3xl sm:text-4xl mb-3 text-center">🚀</div>
+                        <p class="font-semibold text-base sm:text-lg md:text-xl mb-1 text-center">韓国語のその先へ</p>
+                        <p class="text-base sm:text-lg">韓国語はあくまでも夢や未来を広げるための手段です。<br>大切なのはそれを活かしたあなたの未来です。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta" class="py-12 px-4 bg-white text-center">
+            <div class="container mx-auto max-w-3xl">
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-sage-700 mb-8">
+                    未来への第一歩を踏み出そう
+                </h3>
+                <p class="text-base sm:text-lg md:text-xl text-gray-700 mb-1">
+                    まずは、あなたの悩みを聞かせてください。
+                </p>
+                <p class="text-xs sm:text-sm text-gray-500 mb-8 mt-0">
+                    ※一人ひとりに向き合うため、<br class="md:hidden">無料相談の枠には限りがあります。
+                </p>
+                <a href="https://lin.ee/Cgbz9Cg" id="ctaButton" class="inline-block bg-sage-500 text-white font-bold py-4 px-8 rounded-full text-lg sm:text-xl shadow-xl hover:bg-sage-700 transition duration-300 focus-ring-sage transform hover:scale-105">
+                    一歩踏み出してみる
+                </a>
+                <p class="text-xs sm:text-sm text-gray-500 mt-3">※無理な勧誘はいたしません。<br>ご相談だけでも大歓迎です。</p>
+            </div>
+        </section>
+    </main>
+
+    <div id="cta-modal" class="fixed inset-0 bg-gray-600 bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-white p-8 rounded-xl shadow-lg max-w-sm w-full text-center">
+            <p id="modal-message" class="text-lg font-semibold text-gray-700 mb-6 leading-relaxed">
+                もう、迷わないで。<br>あなたの情熱を、確かな自信に変える時が来ました。
+            </p>
+            <button class="bg-sage-500 text-white font-bold py-3 px-6 rounded-full hover:bg-sage-700 transition duration-300 focus-ring-sage" onclick="closeModal()">
+                閉じる
+            </button>
+            <a href="https://lin.ee/Cgbz9Cg" target="_blank" rel="noopener noreferrer" class="block mt-4 text-sage-700 hover:underline">
+                LINEで無料相談に進む
+            </a>
+        </div>
+    </div>
+
+    <footer class="bg-white mt-16 border-t">
+        <div class="container mx-auto px-4 py-3 text-center text-gray-500 text-xs sm:text-sm">
+            <p>&copy; 2025 ryoya 韓国語コーチング. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('header');
+            let lastScrollTop = 0;
+            const headerHeight = header.offsetHeight; 
+
+            window.addEventListener('scroll', function() {
+                let currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (currentScrollTop > lastScrollTop && currentScrollTop > headerHeight) {
+                    header.classList.add('opacity-0', '-translate-y-full');
+                } else if (currentScrollTop < lastScrollTop || currentScrollTop <= 0) {
+                    header.classList.remove('opacity-0', '-translate-y-full');
+                }
+                
+                lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+            });
+
+            // カスタムスムーズスクロール関数（イージングあり）
+            function smoothScrollTo(targetY, duration) {
+                const startY = window.pageYOffset;
+                const distance = targetY - startY;
+                let startTime = null;
+
+                function animation(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const progress = Math.min(timeElapsed / duration, 1);
+                    
+                    // イージング関数 (Ease-in-out quad) を再導入
+                    // 動き出しと停止を滑らかにする
+                    const easeInOutQuad = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+                    window.scrollTo(0, startY + distance * easeInOutQuad);
+
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                    }
+                }
+                requestAnimationFrame(animation);
+            }
+
+            // 「変わりたいあなたへ」ボタンの機能
+            const changeButton = document.getElementById('changeButton');
+            const guaranteeMessage = document.getElementById('guaranteeMessage');
+            
+            changeButton.addEventListener('click', function(e) {
+                e.preventDefault(); // デフォルトのアンカースクロールを停止
+
+                // スクロールターゲットの計算
+                const offset = 120; 
+                const targetY = guaranteeMessage.getBoundingClientRect().top + window.pageYOffset - offset;
+                const scrollDuration = 500; // 0.5秒
+
+                // カスタムスムーズスクロールを実行
+                smoothScrollTo(targetY, scrollDuration);
+
+                // 0.5秒後にメッセージをフェードイン表示
+                setTimeout(() => {
+                    guaranteeMessage.classList.add('show');
+                }, 500); // 0.5秒後にフェードイン開始
+            });
+
+            // Modal functions are kept but not called by the main CTA button anymore
+            function openModal() {
+                document.getElementById('cta-modal').classList.remove('hidden');
+            }
+
+            function closeModal() {
+                    document.getElementById('cta-modal').classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
